@@ -1,5 +1,5 @@
 ### print
-1. try print(32/2) and check which data type is displayed as result ?
+1. try print(32/2) and check which data type is displayed as a result ?
 2. 
 
 
