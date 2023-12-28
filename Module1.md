@@ -1,6 +1,10 @@
-### print
-1. try print(32/2) and check which data type is displayed as a result ?
-2. 
+### Print
+1. try ```print(32/2)``` and check which data type is displayed as a result ?
+2. ```
+   person = "elon musk"
+   company = "twitter"
+   # result-> "elon musk owns twitter"
+   ```
 
 
 ### Variables 
