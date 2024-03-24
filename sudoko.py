@@ -1,5 +1,4 @@
-# game is in process
-from puzzles import hard_1, hard_1_test_1,master_1
+from puzzles import *
 
 
 def gameOver():
@@ -9,7 +8,7 @@ def gameOver():
 class SudokoBoard:
     EMPTY = 0
 
-    def __init__(self, data):
+    def __init__(self, Data):
 
         self.puzzleCellData = {
             (0, 0): self.EMPTY, (0, 1): self.EMPTY, (0, 2): self.EMPTY, (0, 3): self.EMPTY, (0, 4): self.EMPTY,
@@ -32,7 +31,7 @@ class SudokoBoard:
             (8, 5): self.EMPTY, (8, 6): self.EMPTY, (8, 7): self.EMPTY, (8, 8): self.EMPTY
 
         }
-        self.setup(data)
+        self.setup(Data)
 
         self.BoardFilled = False
         self.block1 = [[0, 0], [0, 1], [0, 2],
@@ -93,36 +92,38 @@ class SudokoBoard:
                     self.puzzleCellData[i, j] = value
 
     def display(self):
-        print(
+        FirstLine = (
             f"{self.puzzleCellData[0, 0]} {self.puzzleCellData[0, 1]} {self.puzzleCellData[0, 2]} | {self.puzzleCellData[0, 3]} {self.puzzleCellData[0, 4]} {self.puzzleCellData[0, 5]} | {self.puzzleCellData[0, 6]} {self.puzzleCellData[0, 7]} {self.puzzleCellData[0, 8]}")
 
-        print(
+        SecondLine = (
             f"{self.puzzleCellData[1, 0]} {self.puzzleCellData[1, 1]} {self.puzzleCellData[1, 2]} | {self.puzzleCellData[1, 3]} {self.puzzleCellData[1, 4]} {self.puzzleCellData[1, 5]} | {self.puzzleCellData[1, 6]} {self.puzzleCellData[1, 7]} {self.puzzleCellData[1, 8]}")
 
-        print(
+        thirdLine = (
             f"{self.puzzleCellData[2, 0]} {self.puzzleCellData[2, 1]} {self.puzzleCellData[2, 2]} | {self.puzzleCellData[2, 3]} {self.puzzleCellData[2, 4]} {self.puzzleCellData[2, 5]} | {self.puzzleCellData[2, 6]} {self.puzzleCellData[2, 7]} {self.puzzleCellData[2, 8]}")
 
-        print("-  -  +  -  - +  -  -")
-        print(
+        space = ("-  -  +  -  - +  -  -")
+        FourthLine = (
             f"{self.puzzleCellData[3, 0]} {self.puzzleCellData[3, 1]} {self.puzzleCellData[3, 2]} | {self.puzzleCellData[3, 3]} {self.puzzleCellData[3, 4]} {self.puzzleCellData[3, 5]} | {self.puzzleCellData[3, 6]} {self.puzzleCellData[3, 7]} {self.puzzleCellData[3, 8]}")
 
-        print(
+        FifthLine = (
             f"{self.puzzleCellData[4, 0]} {self.puzzleCellData[4, 1]} {self.puzzleCellData[4, 2]} | {self.puzzleCellData[4, 3]} {self.puzzleCellData[4, 4]} {self.puzzleCellData[4, 5]} | {self.puzzleCellData[4, 6]} {self.puzzleCellData[4, 7]} {self.puzzleCellData[4, 8]}")
 
-        print(
+        SixthLine = (
             f"{self.puzzleCellData[5, 0]} {self.puzzleCellData[5, 1]} {self.puzzleCellData[5, 2]} | {self.puzzleCellData[5, 3]} {self.puzzleCellData[5, 4]} {self.puzzleCellData[5, 5]} | {self.puzzleCellData[5, 6]} {self.puzzleCellData[5, 7]} {self.puzzleCellData[5, 8]}")
-        print("-  -  +  -  - +  -  -")
-        print(
+        # print("-  -  +  -  - +  -  -")
+        SevenLine = (
             f"{self.puzzleCellData[6, 0]} {self.puzzleCellData[6, 1]} {self.puzzleCellData[6, 2]} | {self.puzzleCellData[6, 3]} {self.puzzleCellData[6, 4]} {self.puzzleCellData[6, 5]} | {self.puzzleCellData[6, 6]} {self.puzzleCellData[6, 7]} {self.puzzleCellData[6, 8]}")
 
-        print(
+        eightLine = (
             f"{self.puzzleCellData[7, 0]} {self.puzzleCellData[7, 1]} {self.puzzleCellData[7, 2]} | {self.puzzleCellData[7, 3]} {self.puzzleCellData[7, 4]} {self.puzzleCellData[7, 5]} | {self.puzzleCellData[7, 6]} {self.puzzleCellData[7, 7]} {self.puzzleCellData[7, 8]}")
 
-        print(
+        nineLine = (
             f"{self.puzzleCellData[8, 0]} {self.puzzleCellData[8, 1]} {self.puzzleCellData[8, 2]} | {self.puzzleCellData[8, 3]} {self.puzzleCellData[8, 4]} {self.puzzleCellData[8, 5]} | {self.puzzleCellData[8, 6]} {self.puzzleCellData[8, 7]} {self.puzzleCellData[8, 8]}")
 
-    def look_up(self):
-        pass
+        final_display = (
+                FirstLine + "\n" + SecondLine + "\n" + thirdLine + "\n" + space + "\n" + FourthLine + "\n" + FifthLine + "\n" + SixthLine + "\n" + space + "\n" + SevenLine + "\n" + eightLine + "\n" + nineLine)
+
+        return final_display
 
     def IsInBlock(self, currentCell, option):
 
@@ -227,15 +228,17 @@ def getPossibleOptions(board, currentCell):
 
 
 def findingPlace(board, PossibleOptions, currentCell):
+
     if not PossibleOptions:
-        print("NO possible Options for " + str(currentCell))
+        print("No possible Options for " + str(currentCell))
         return
 
     for option in PossibleOptions:
-        print("filling " + str(currentCell) + " with " + str(option) + " from " + str(PossibleOptions))
-        board.puzzleCellData[currentCell] = option
 
-        board.display()
+        mess = ("filling " + str(currentCell) + " with " + str(option) + " from " + str(PossibleOptions))
+        print(mess)
+        board.puzzleCellData[currentCell] = option
+        print(board.display())
         print()
 
         nextCell = board.getNextCell(currentCell)
@@ -244,45 +247,19 @@ def findingPlace(board, PossibleOptions, currentCell):
 
             if not board.BoardFilled:
                 # removing
-                print("Removing " + str(currentCell))
+
+                remove_message = ("Removing " + str(currentCell))
+                print(remove_message)
                 board.puzzleCellData[currentCell] = board.EMPTY
+
 
             else:
                 break
+
 
         else:
             print("Game is Over")
 
 
-data = [
-    [0, 3, 9, 0, 0, 0, 0, 0, 2],
-    [0, 0, 0, 0, 0, 0, 8, 6, 0],
-    [4, 0, 0, 5, 7, 0, 1, 0, 0],
-
-    [0, 9, 0, 1, 0, 0, 0, 0, 0],
-    [0, 2, 0, 0, 0, 6, 3, 0, 8],
-    [6, 0, 8, 4, 0, 3, 0, 1, 5],
-
-    [0, 0, 0, 6, 3, 1, 0, 9, 0],
-    [7, 0, 5, 0, 0, 8, 0, 2, 0],
-    [0, 0, 0, 2, 0, 0, 4, 0, 0]
-]
-
-first_6_rows_filled = [
-    [1, 3, 9, 8, 6, 4, 7, 5, 2],
-    [2, 5, 7, 3, 1, 9, 8, 6, 4],
-    [4, 8, 6, 5, 7, 2, 1, 3, 9],
-
-    [3, 9, 4, 1, 8, 5, 2, 7, 6],
-    [5, 2, 1, 7, 9, 6, 3, 4, 8],
-    [6, 7, 8, 4, 2, 3, 9, 1, 5],
-
-    # [0, 0, 0, 6, 3, 1, 0, 9, 0],
-    [8, 4, 2, 6, 3, 1, 5, 9, 0],
-    [7, 0, 5, 0, 0, 8, 0, 2, 0],
-    [0, 0, 0, 2, 0, 0, 4, 0, 0]
-]
 fresh_board = SudokoBoard(master_1)
-test_board = SudokoBoard(master_1)
 findingPlace(fresh_board, getPossibleOptions(fresh_board, (0, 0)), (0, 0))
-print(getPossibleOptions(test_board, (0, 0)))
